@@ -18,16 +18,20 @@ class Onebox::Engine::OpenStreetMapOnebox
   matches_regexp(/^https?:\/\/(?:www\.)openstreetmap\.org/)
 
   def to_html
-    if match = @url.match(/#map=([\d\.]+)\/([\d\.]+)\/([\d\.]+)/)
+    if match = @url.match(/#map=([\d\.]+)\/([-\d\.]+)\/([-\d\.]+)/)
       zoom, lat, lon = match.captures
       iframe_url = "//www.openstreetmap.org/export/embed.html?bbox=#{get_bbox(lat.to_f, lon.to_f, zoom.to_i)}"
 
-      if marker = @url.match(/mlat=([\d\.]+).+mlon=([\d\.]+)/)
+      if marker = @url.match(/mlat=([-\d\.]+).+mlon=([-\d\.]+)/)
         mlat, mlon = marker.captures
         iframe_url = "#{iframe_url}&amp;marker=#{mlat}%2C#{mlon}"
       end
 
-      "<iframe src='#{iframe_url}' style='border: 0' width='#{@@width.to_i}' height='#{@@height.to_i}' frameborder='0' scrolling='no'></iframe>"
+      if layers = @url.match(/layers=(\w+)/)
+        iframe_url = "#{iframe_url}&amp;layers=#{layers.captures[0]}"
+      end
+
+      "<iframe src='#{iframe_url}' style='border: 0' width='#{@@width}' height='#{@@height}' frameborder='0' scrolling='no'></iframe>"
     else
       #"NOPE" #@url
       @url
