@@ -29,8 +29,8 @@ Rebuild Discourse: `/var/discourse/launcher rebuild app`
 ### Why URLs without *Marker* parameters are not being oneboxed?
 
 The `map` parameter is located inside URL hash.
-Root URLs without query parameters are currently [ignored by onebox library](https://github.com/discourse/onebox/blame/master/lib/onebox/matcher.rb#L17).
-This is a temporary inconvenience: upstream fix will be introduced soon.
+Root URLs without query parameters are currently [ignored by onebox library](https://github.com/discourse/onebox/blob/d94d4ef7dffaf299b2b1cd673e9f7d4f3b5da9dc/lib/onebox/matcher.rb#L17).
+This is a temporary inconvenience: [upstream fix is awaiting approval](https://github.com/discourse/onebox/pull/252).
 
 ### I don't like oneboxing: can't I just copy&paste `<iframe>` code from OpenStreetMap.org's share menu?
 
