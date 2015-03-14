@@ -22,16 +22,11 @@ Rebuild Discourse: `/var/discourse/launcher rebuild app`
 
 ## FAQ
 
-### What URLs are oneboxed?
+### What URLs are oneboxed by this plugin?
 
 `http://www.openstreetmap.org/?mlat=[Marker Latitude]&mlon=[Marker Longitude]#map=[Zoom Level]/[Latitude]/[Longitude]&layers=[Layer code]`
 
-### Why URLs without *Marker* parameters are not being oneboxed?
+### I don't like/need oneboxing: can't I just copy&paste `<iframe>` code from OpenStreetMap.org's share menu?
 
-The `map` parameter is located inside URL hash.
-Root URLs without query parameters are currently [ignored by onebox library](https://github.com/discourse/onebox/blob/d94d4ef7dffaf299b2b1cd673e9f7d4f3b5da9dc/lib/onebox/matcher.rb#L17).
-This is a temporary inconvenience: [upstream fix is awaiting approval](https://github.com/discourse/onebox/pull/252).
+Sure you can! You don't even need this plugin for that, as [iframe code is whitelisted in Discourse itself since v1.1.1](https://github.com/discourse/discourse/commit/9dccd975d9446fc99f4c76322b8934c5afd25888).
 
-### I don't like oneboxing: can't I just copy&paste `<iframe>` code from OpenStreetMap.org's share menu?
-
-Sure you can: this plugin whitelists posting iframes from openstreetmap.org.
