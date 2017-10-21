@@ -1,9 +1,6 @@
 # name: OpenStreetMap Onebox
-# version: 0.1
+# version: 0.2
 # authors: Marcin Rataj
-
-# whitelist raw iframes posted by users
-register_asset('javascripts/iframe_whitelist.js', :server_side)
 
 class Onebox::Engine::OpenStreetMapOnebox
   include Onebox::Engine
